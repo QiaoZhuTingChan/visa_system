@@ -1,0 +1,42 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 14, 2017 11:59:15 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.jyd.bms.bean.Menu" table="sys_menu">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="menuId" type="java.lang.String">
+            <column name="menu_id" />
+        </property>
+        <property name="parentId" type="java.lang.String">
+            <column name="parent_id" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="name" />
+        </property>
+        <property name="type" type="int">
+            <column name="type" />
+        </property>
+        <property name="iconName" type="java.lang.String">
+            <column name="icon_name" />
+        </property>
+        <property name="menuUrl" type="java.lang.String">
+            <column name="menu_url" />
+        </property>
+        <property name="callMethod" type="java.lang.String">
+            <column name="call_method" />
+        </property>
+        <property name="languageId" type="java.lang.String">
+            <column name="language_id" />
+        </property>
+        <property name="display" type="java.lang.Boolean">
+            <column name="display" />
+        </property>
+        <property name="Sort" type="int">
+            <column name="sort" />
+        </property>
+    </class>
+</hibernate-mapping>

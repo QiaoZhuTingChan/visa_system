@@ -1,0 +1,19 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 14, 2017 11:59:15 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="com.jyd.bms.bean.MessageData" table="message_data">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="key" type="java.lang.String">
+			<column name="data_key" />
+		</property>
+		<property name="value" type="java.lang.String">
+			<column name="data_value" />
+		</property>
+		
+	</class>
+</hibernate-mapping>

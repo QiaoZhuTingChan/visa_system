@@ -1,0 +1,49 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 14, 2017 11:59:15 AM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="com.jyd.bms.bean.User" table="sys_user">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="loginName" type="java.lang.String">
+			<column name="login_name" />
+		</property>
+		<property name="userName" type="java.lang.String">
+			<column name="user_name" />
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="password" />
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="email" />
+		</property>
+		<many-to-one name="baPosition"
+			class="com.jyd.bms.bean.BaPosition" fetch="join">
+			<column name="ba_position_id" />
+		</many-to-one>
+		<property name="createDate" type="java.sql.Timestamp">
+			<column name="create_date" />
+		</property>
+		<property name="updateDate" type="java.sql.Timestamp">
+			<column name="update_date" />
+		</property>
+		<property name="createUser" type="java.lang.String">
+			<column name="create_user" />
+		</property>
+		<property name="updateUser" type="java.lang.String">
+			<column name="update_user" />
+		</property>
+		<property name="remark" type="java.lang.String">
+			<column name="remark" />
+		</property>
+		<property name="enable" type="java.lang.Boolean">
+			<column name="enable" />
+		</property>
+		<property name="admin" type="java.lang.Boolean">
+			<column name="admin" />
+		</property>
+	</class>
+</hibernate-mapping>

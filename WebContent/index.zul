@@ -1,0 +1,99 @@
+<?page title="签证-业务系统" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<window width="100%" height="100%" border="none" id="indexWindow"
+		apply="com.jyd.bms.window.IndexWindow">
+		<script src="/script/jquery-3.3.1.min.js" type="text/javascript" />
+		<script type="text/javascript" src="/script/system.js" />
+		<script type="text/JavaScript" src="/script/index.js"></script>
+		<borderlayout width="100%" height="100%">
+			<north border="none">
+				<h:table width="100%" style="background:#468bf0;">
+					<h:tr>
+						<h:td width="300px">
+							<hbox align="center"
+								style="width:100px;text-algin:center;">
+								<div
+									style="width:200px;height:64px;text-algin:center;">
+									<label value="" id="titleLabel" style="color: #fff;font-size: 22px;line-height: 66px;text-shadow: 2px 1px 1px black;" />
+								</div>
+								<button id="loadPageButton"
+									label="loadPage" visible="false" />
+								<button id="closeTabButton"
+									label="Close Current Tab" visible="false" />
+							</hbox>
+						</h:td>
+						<h:td align="right">
+							<h:div
+								style="display: inline-block;position: relative;">
+								<image id="infoImage"
+									src="image/spechbubble.png"
+									style="cursor:pointer;width:22px;height:22px;" visible="true"
+									tooltiptext="系统消息" />
+								<h:div id="message"
+									style="cursor:pointer;position: absolute;top: 0;width:20px; left: 0;font-weight:bold;font-size:10px;color:red;text-align:center;line-height: 22px;"
+									onclick="viewAllMessage()" title="系统消息">
+								</h:div>
+							</h:div>
+							<image id="changePasswordImage"
+								src="image/user.png"
+								style="cursor:pointer;margin-left:10px;width:22px;height:22px;"
+								tooltiptext="修改密码" />
+							<image src="image/menu.png" width="22px"
+								height="22px"
+								style="margin-bottom: -2px;margin-left:10px;cursor:pointer;"
+								context="themeMeupopup" tooltip="themeMeupopup"
+								tooltiptext="界面风格" />
+							<image id="deleteWindowImage"
+								src="image/delete.png" height="22px" width="22px"
+								style="margin-bottom: 2px;margin-left:10px;cursor:pointer;"
+								tooltiptext="关闭所有窗口" />
+							<image id="exitImage" src="image/exit.png"
+								height="22px" width="22px"
+								style="margin-bottom: 2px;margin-left:10px;margin-right:10px;cursor:pointer;"
+								tooltiptext="退出" />
+							<menupopup id="themeMeupopup"></menupopup>
+						</h:td>
+					</h:tr>
+				</h:table>
+			</north>
+			<center border="none">
+				<borderlayout width="100%" height="100%">
+					<west autoscroll="true" splittable="true"
+						collapsible="true" width="200px">
+						<tree id="menuTree" fixedLayout="true">
+							<treecols>
+								<treecol label="菜单"></treecol>
+							</treecols>
+						</tree>
+					</west>
+					<center autoscroll="true">
+						<tabbox width="100%" height="100%"
+							id="mainWindow">
+							<tabs></tabs>
+							<tabpanels></tabpanels>
+						</tabbox>
+					</center>
+				</borderlayout>
+			</center>
+		</borderlayout>
+	</window>
+	<h:div id="divMessage"
+		style="display: none;  position: absolute;  left:40%; top:40%;
+	padding: 0px;  border: 1px solid #468bf0;  background-color: white;  z-index:1002;  overflow: auto;">
+		<h:div
+			style="width:300px;height:24px;background-color:#468bf0;border-top: #85ABE4 1px solid;padding: 3px;">
+			<h:image id="img" title="close" src="image/round_delete.png"
+				style="cursor:pointer;float: right;width: 22px;height: 22px;"
+				onclick="closeMessage()">
+			</h:image>
+		</h:div>
+		<h:div id="newMessage"
+			style="height:100px;width:280px;padding: 10px;">
+			<h:p id="messageContent">hello</h:p>
+		</h:div>
+		<h:div style="width:300px;text-align:center;padding: 3px;">
+			<h:input type="button" onclick="viewMessage()"
+				value="立马处理。。。" />
+		</h:div>
+	</h:div>
+</zk>

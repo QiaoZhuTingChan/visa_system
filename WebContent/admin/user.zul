@@ -1,0 +1,158 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<window border="normal" width="100%" height="100%"
+		use="com.jyd.bms.window.admin.UserWindow">
+		<script src="/script/jquery-1.4.1.js" type="text/javascript" />
+		<script src="/script/enter.js" type="text/javascript" />
+		<borderlayout width="100%" height="100%">
+			<center>
+				<borderlayout width="100%" height="100%">
+					<north style="background:#F0FAFF">
+						<hbox pack="right" width="100%">
+							<hbox>
+								<textbox id="conditionTextbox"
+									width="200px" />
+								<button label="查询" id="searchButton" />
+							</hbox>
+						</hbox>
+					</north>
+					<center flex="true">
+						<listbox id="userListbox" vflex="true"
+							fixedLayout="true">
+							<listhead sizable="true">
+								<listheader label="登陆名" width="20%" />
+								<listheader label="姓名" width="20%" />
+								<listheader label="邮件地址" width="20%" />
+								<listheader label="是否启用" width="20%" />
+								<listheader label="备注" width="20%" />
+							</listhead>
+						</listbox>
+					</center>
+					<south id="southPaging"></south>
+				</borderlayout>
+			</center>
+			<south height="160px" splittable="true">
+				<borderlayout>
+					<center flex="true">
+						<h:table width="100%" cellpadding="1"
+							cellspacing="1" class="tableBorderDark">
+							<h:tr>
+								<h:td width="10%"
+									class="tdEvennoBorder">
+									<hbox>
+										<label value="登陆名" />
+									</hbox>
+								</h:td>
+								<h:td width="23%"
+									class="tdOddnoBorder">
+									<label value="" id="loginNameLabel"
+										visible="true" />
+									<textbox id="loginNameTextbox"
+										visible="false" />
+								</h:td>
+								<h:td width="10%"
+									class="tdEvennoBorder">
+									<hbox>
+										<label value="密码" />
+									</hbox>
+								</h:td>
+								<h:td width="23%"
+									class="tdOddnoBorder">
+									<label value="" id="passwordLabel"
+										visible="true" />
+									<textbox id="passwordTextbox"
+										visible="false" type="password" />
+								</h:td>
+								<h:td width="10%"
+									class="tdEvennoBorder">
+									<hbox>
+										<label value="职位" />
+									</hbox>
+								</h:td>
+								<h:td width="24%"
+									class="tdOddnoBorder">
+									<label value="" id="positionLabel"
+										visible="true" />
+									<baPositionListbox
+										id="baPositionListbox" visible="false" />
+								</h:td>
+							</h:tr>
+							<h:tr>
+								<h:td width="10%"
+									class="tdEvennoBorder">
+									<hbox>
+										<label value="姓名" />
+									</hbox>
+								</h:td>
+								<h:td width="23%"
+									class="tdOddnoBorder">
+									<label value="" id="userNameLabel"
+										visible="true" />
+									<textbox id="userNameTextbox"
+										visible="false" />
+								</h:td>
+								<h:td width="10%"
+									class="tdEvennoBorder">
+									<hbox>
+										<label value="邮件地址" />
+									</hbox>
+								</h:td>
+								<h:td width="23%"
+									class="tdOddnoBorder">
+									<label value="" id="emailLabel"
+										visible="true" />
+									<textbox id="emailTextbox"
+										visible="false" />
+								</h:td>
+								<h:td width="10%"
+									class="tdEvennoBorder">
+									<hbox>
+										<label value="启用" />
+									</hbox>
+								</h:td>
+								<h:td width="24%"
+									class="tdOddnoBorder">
+									<label value="" id="enableLabel"
+										visible="true" />
+									<checkbox id="enableCheckbox"
+										visible="false" />
+								</h:td>
+							</h:tr>
+							<h:tr>
+								<h:td width="10%"
+									class="tdEvennoBorder">
+									<hbox>
+										<label value="备注" />
+									</hbox>
+								</h:td>
+								<h:td width="30%" colspan="5"
+									class="tdOddnoBorder">
+									<label value="" id="remarkLabel"
+										visible="true" />
+									<textbox id="remarkTextbox"
+										visible="false" />
+								</h:td>
+							</h:tr>
+						</h:table>
+					</center>
+					<south>
+						<hbox pack="center" width="100%">
+							<hbox align="center">
+								<button id="addButton" label="增加"
+									visible="true" />
+								<button id="editButton" label="修改"
+									visible="false" />
+								<button id="saveButton" label="保存"
+									visible="false" />
+								<button id="cancelButton" label="取消"
+									visible="false" />
+								<button id="userMenuButton" label="用户权限"
+									visible="false" />
+							</hbox>
+						</hbox>
+					</south>
+				</borderlayout>
+			</south>
+		</borderlayout>
+	</window>
+</zk>

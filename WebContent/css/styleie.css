@@ -1,0 +1,304 @@
+.panelBackground {
+	background: #c5e6ef;
+}
+
+.tableBorderDark {
+	background-color: #7F9DB9;
+}
+
+.tdOddnoBorder {
+	height: 30px;
+	padding: 2px;
+	background-color: #FFFFFF;
+}
+
+.tdEvennoBorder {
+	height: 30px;
+	padding: 2px;
+	background-color: #F0FAFF;
+}
+
+.thTitle {
+	text-align: center;
+	line-height: 30px;
+	padding: 0px;
+	font-size: 10pt;
+	border: 0px solid #D4D4D4;
+	background-image: url('../img/thTitle1.gif');
+}
+
+.tabText {
+	color: #416AA3;
+	cursor: pointer; 
+	font-style: normal; 
+	font-family: ${fontFamilyT}; 
+	font-size: ${fontSizeM}; 
+	font-size-adjust: none; 
+	padding:4px 0 4px; 
+	white-space: normal;
+	text-align: center;
+}
+
+.trBody_1 {
+	background-color: yellow;
+}
+
+.trBody_2 {
+	background-color: #9966FF;
+}
+
+.markLabel_0 {
+	color: green;
+}
+
+.markLabel_1 {
+	color: red;
+}
+
+.markLabel {
+	font-weight: bold;
+	color: red !important;
+}
+
+.effectiveItem {
+	color: blue !important;
+}
+
+.redItem {
+	color: red !important;
+}
+
+.errorItem {
+	cursor: pointer;
+	color: red !important;
+	text-decoration: underline;
+}
+
+.invalidItem .normalItem {
+	color: black !important;
+}
+
+.labelBackground {
+	background: silver;
+}
+
+.pointerCursor {
+	cursor: pointer;
+}
+
+.z-tab-ver .z-tab-ver-text {
+	color: #416AA3;
+	cursor: pointer; 
+	font-style: normal; 
+	font-family: ${fontFamilyT}; 
+	font-size: ${fontSizeM}; 
+	font-size-adjust: none; 
+	padding:4px 0 4px; 
+	white-space: normal;
+	text-align: center;
+}
+.toolbarBackground {
+	height: 21px;
+	padding: 2px;
+	background-color: #FFCF8C;
+}
+
+.underline {
+	cursor: pointer;
+	color: blue !important;
+	text-decoration: underline;
+}
+
+.treeToolBar {
+	font-family: Arial, "新細明體", "宋體" !important;
+	background: #FFFFFF !important;
+	border: 0 !important;
+	color: blue !important;
+	text-valign: middle;
+}
+
+.listboxTableStyle {
+	border: 1px solid #D4D4D4;
+	border-collapse: collapse;
+	cursor: pointer;
+}
+
+.listboxThtitle {
+	border: 1px solid #D4D4D4;
+	font-size: 10pt;
+	background-image: url('../img/thTitle1.gif');
+	text-align: center;
+}
+
+.clickRowBackgroundColor {
+	background-color: #FFCC99 !important;
+}
+
+.labelTitle {
+	font-weight: bold !important;
+	color: red;
+	font-size: 12pt;
+}
+
+.textAlign {
+	text-align: right !important;
+}
+
+.green {
+	background-color: #CCFF99;
+}
+
+.pink {
+	background-color: #FF99FF;
+}
+
+.gray {
+	background-color: #E7E7E7;
+}
+
+.grayLabel {
+	color: #E7E7E7 !important;
+}
+
+.white {
+	background-color: #FFFFFF !important;
+}
+
+.bold {
+	font-weight: bold !important;
+}
+
+.textBoxNoBorder {
+	border: none;
+	background-color: #FFFFFF
+}
+
+.instructionFont {
+	color: #66669A;
+	font-size: 9pt;
+}
+
+.buttonFontFamily {
+	font-family: "新細明體" !important;
+}
+
+.routingButton{
+	width:105px !important; 
+	height:30px !important;
+	font-size:12pt !important;
+}
+
+.workLabel{
+	font-size:12pt;
+	font-family:"標楷體";
+}
+
+.backgroundImage {
+	background-image: url('../img/thTitle1.gif');
+}
+.lineThrough{
+	color:red;
+	text-decoration:line-through;
+}
+.z-menubar-ver_vertical {    
+	background: repeat-x scroll 0 center #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    display: block;
+    padding: 2px 0;
+    position: relative;
+    font-size:11pt !important;
+}
+.z-menubar-hor .z-menu, .z-menubar-hor .z-menu-item, .z-menubar-hor .z-menu-btn, .z-menubar-hor .z-menu-item-btn, .z-menubar-hor span, .z-menubar-hor a, .z-menubar-hor div, .z-menubar-ver .z-menu, .z-menubar-ver .z-menu-item, .z-menubar-ver .z-menu-btn, .z-menubar-ver .z-menu-item-btn, .z-menubar-ver span, .z-menubar-ver a, .z-menubar-ver div {
+    font-family: Verdana,Tahoma,Arial,Helvetica,sans-serif;
+    font-size: 11pt;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    white-space: nowrap;
+    height:24px; 
+}
+.z-menu-body-text-img .z-menu-inner-m .z-menu-btn, .z-menu-body-img .z-menu-inner-m .z-menu-btn, .z-menu-item-body-text-img .z-menu-item-inner-m .z-menu-item-btn {
+    padding-left: 26px;
+}
+
+.homeMainListLabel{
+	font-size:11pt !important;
+}
+
+.boxframe {
+    width: 99% !important;
+    height: 99% !important;
+}
+
+.boxWorkPageframe {
+    width: 99% !important;
+    height: 99% !important;
+}
+
+.boxUrlframe{
+    width: 95% !important;
+    height: 98% !important;
+    position:absolute !important;
+}
+
+.workPagePanelBackground {
+	background-image: url('../images/pending/P_BACKGROUD.png');
+}
+.workPageGridStyle{
+	border:none; 
+	border-bottom: 1px solid #E1E1E1;
+}
+.workPageGridRowNotSelect{
+	border:none !important;
+	background-color:#ECECEC !important;
+}
+.workPageGridRowSelect{
+	border:none;
+	background-color:#1779d4 !important;
+	color:#FFFFFF !important;
+}
+.workPageFlowDescstyle{
+	font-size:9pt;
+	font-family: Arial, "新細明體", "宋體"
+	font-weight:bold;
+}
+.workPageFlowDescstyleSelect{
+	font-size:9pt;
+	font-family: Arial, "新細明體", "宋體"
+	font-weight:bold;
+	color:#FFFFFF !important;
+}
+.workPageFlowOvertime{
+	font-size:9pt;
+	font-family: Arial, "新細明體", "宋體"
+	font-weight:bold;
+	color:red !important;
+}
+.workPageUserLabel{
+	font-size:9pt;
+}
+.workPageUserLabelSelect{
+	font-size:9pt;
+	color:#FFFFFF !important;
+}
+.workPageDateSelect{
+	color:#FFFFFF !important;
+}
+.workPageFlowId{
+	color:#a9a9a9 !important;
+}
+
+.grayTipClass{
+	color:gray !important;
+}
+
+/*改*/
+.tableBorderDark_a{
+	background-color: #FFFFFF;
+	padding-top: 25px;
+}
+.tdEvennoBorder_a{
+	height: 60px;
+	padding: 2px 2px 2px 64px;
+	background-color: #FFF;
+}

@@ -1,0 +1,73 @@
+<?page title="Login" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<window border="none" use="com.jyd.bms.window.LoginWindow"
+		width="100%" height="100%">
+		<borderlayout>
+			<center
+				style="background-color:#99CCFF;background-size: 100% 100%;">
+				<hbox pack="center" width="100%" height="100%">
+					<hbox width="400px" height="100%" align="center">
+						<h:table width="400px" cellpadding="0" style="border-radius:10px;"
+							cellspacing="0" class="tableBorderDark tableBorderDark_a">
+							<h:tr>
+								<h:td colspan="2" align="center"
+									height="50px">
+										<label style="font-size:22px;" id="titleLabel" />
+								</h:td>
+							</h:tr>
+							<h:tr>
+								<h:td width="40%"
+									class="tdEvennoBorder tdEvennoBorder_a" align="center">
+									<hbox>
+										<label value="用户" />
+									</hbox>
+								</h:td>
+								<h:td width="60%"
+									class="tdOddnoBorder">
+									<textbox id="textboxLoginName" />
+								</h:td>
+							</h:tr>
+							<h:tr>
+								<h:td width="40%"
+									class="tdEvennoBorder tdEvennoBorder_a" align="center">
+									<hbox>
+										<label value="密码" />
+									</hbox>
+								</h:td>
+								<h:td width="60%"
+									class="tdOddnoBorder">
+									<textbox id="textboxPassword"
+										type="password" />
+								</h:td>
+							</h:tr>
+							<h:tr id="imageCodeTr">
+								<h:td width="40%"
+									class="tdEvennoBorder tdEvennoBorder_a" align="center">
+									<hbox>
+										<label value="验证码" />
+									</hbox>
+								</h:td>
+								<h:td width="60%"
+									class="tdOddnoBorder">
+									<textbox id="textboxImageCode"
+										width="70px" />
+									<image id="imageCode" width="80px"
+										height="23px" />
+								</h:td>
+							</h:tr>
+							<h:tr>
+								<h:td width="100%" colspan="2"
+									class="tdEvennoBorder tdEvennoBorder_b" align="center">
+									<button label="登录" id="buttonLogin"
+										style="width:60px; margin:1px 20px 0 10px;" />
+									<button label="重置" id="buttonReset"
+										style="width:60px;" />
+								</h:td>
+							</h:tr>
+						</h:table>
+					</hbox>
+				</hbox>
+			</center>
+		</borderlayout>
+	</window>
+</zk>

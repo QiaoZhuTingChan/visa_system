@@ -1,0 +1,45 @@
+/*
+ * imgAreaSelect animated border style
+ */
+
+.imgareaselect-border1 {
+	background: url(../img/border-anim-v.gif) repeat-y left top;
+}
+
+.imgareaselect-border2 {
+    background: url(../img/border-anim-h.gif) repeat-x left top;
+}
+
+.imgareaselect-border3 {
+    background: url(../img/border-anim-v.gif) repeat-y right top;
+}
+
+.imgareaselect-border4 {
+    background: url(../img/border-anim-h.gif) repeat-x left bottom;
+}
+
+.imgareaselect-border1, .imgareaselect-border2,
+.imgareaselect-border3, .imgareaselect-border4 {
+    filter: alpha(opacity=50);
+	opacity: 0.5;
+}
+
+.imgareaselect-handle {
+    background-color: #fff;
+	border: solid 1px #000;
+    filter: alpha(opacity=50);
+	opacity: 0.5;
+}
+
+.imgareaselect-outer {
+	background-color: #000;
+    filter: alpha(opacity=50);
+	opacity: 0.5;
+}
+
+.imgareaselect-selection {
+}
+
+DIV.frame {
+	BORDER-BOTTOM: #ddd 2px solid; BORDER-LEFT: #ddd 2px solid; PADDING-BOTTOM: 0.8em; PADDING-LEFT: 0.8em; PADDING-RIGHT: 0.8em; BACKGROUND: #fff; BORDER-TOP: #ddd 2px solid; BORDER-RIGHT: #ddd 2px solid; PADDING-TOP: 0.8em
+}
