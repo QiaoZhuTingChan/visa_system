@@ -52,7 +52,7 @@
 								<h:td width="10%"
 									class="tdEvennoBorder">
 									<hbox>
-										<label value="父类id" />
+										<label value="上级" />
 									</hbox>
 								</h:td>
 								<h:td width="10%"
@@ -72,7 +72,7 @@
 									class="tdOddnoBorder">
 									<label value="" id="sortIndexLabel"
 										visible="true" />
-									<textbox id="sortIndexTextbox"
+									<intbox id="sortIndexTextbox"
 										visible="false" />
 								</h:td>
 								<h:td width="10%"

@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.zkoss.zk.ui.SuspendNotAllowedException;
 import org.zkoss.zul.Button;
+import org.zkoss.zul.Intbox;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Tree;
@@ -45,7 +46,7 @@ public class ProductCategoryWindow extends BaseWindow {
 	private Label parentIdLabel;
 	private ProductCategoryChoose productCategoryChoose;
 	private Label sortIndexLabel;
-	private Textbox sortIndexTextbox;
+	private Intbox sortIndexTextbox;
 	private Label remarkLabel;
 	private Textbox remarkTextbox;
 	private ProductCategory productCategory;
@@ -69,14 +70,14 @@ public class ProductCategoryWindow extends BaseWindow {
 
 	@Override
 	public void initData() {
-		productCategoryChoose.setProductCategorylist(productCategorylist);
-		productCategoryChoose.initComponent();
-			try {
-				loadingParent();
-			} catch (DataNotFoundException | DAOException e) {
-				log.error(this.getClass().getSimpleName(), e);
-			}
-			
+		try {
+			loadingParent();
+			productCategoryChoose.setProductCategorylist(productCategorylist);
+			productCategoryChoose.initComponent();
+		} catch (DataNotFoundException | DAOException e) {
+			log.error(this.getClass().getSimpleName(), e);
+		}
+
 	}
 
 	/**
@@ -154,9 +155,35 @@ public class ProductCategoryWindow extends BaseWindow {
 		item.setValue(cate);
 	}
 
-	public void onClick$searchButton() throws SuspendNotAllowedException, InterruptedException {
-		condition = conditionTextbox.getValue();
-		initData();
+	public void onClick$searchButton() {
+		try {
+			condition = conditionTextbox.getValue();
+			searchCategorylist.clear();
+			productCategoryTree.clear();
+			if (condition.equals("")) {
+				loadingParent();
+				return;
+			}
+			for (ProductCategory cate : productCategorylist) {
+				if (cate.getName().toUpperCase().indexOf(condition.toUpperCase()) > -1) {
+					searchCategorylist.add(cate);
+				}
+			}
+			if (searchCategorylist.size() == 1) {
+				conditionTextbox.setValue(searchCategorylist.get(0).getName());
+				conditionTextbox.setFocus(true);
+				createSearchTree();
+			} else if (searchCategorylist.size() == 0) {
+				conditionTextbox.setFocus(true);
+				Messagebox.show("" + condition + "不存在");
+				return;
+			} else {
+				conditionTextbox.setFocus(true);
+				createSearchTree();
+			}
+		} catch (SuspendNotAllowedException | DataNotFoundException | DAOException e) {
+			log.error(this.getClass().getSimpleName(), e);
+		}
 	}
 
 	public void onOKsearchButton() throws SuspendNotAllowedException, InterruptedException {
@@ -213,32 +240,33 @@ public class ProductCategoryWindow extends BaseWindow {
 		parentIdLabel.setValue("");
 		productCategoryChoose.setValue("");
 		sortIndexLabel.setValue("");
-		sortIndexTextbox.setValue("");
+		sortIndexTextbox.setValue(0);
 		remarkLabel.setValue("");
 		remarkTextbox.setValue("");
 	}
 
 	public void setProductCategoryValue(ProductCategory productCategory) {
 		productCategory.setName(nameTextbox.getValue());
-//		productCategory.setParentId(parentIdTextbox.getValue());
-//		productCategory.setSortIndex(sortIndexTextbox.getValue());
+		productCategory.setParentCategory(productCategoryChoose.getProductCategory());
+		productCategory.setSortIndex(sortIndexTextbox.getValue());
 		productCategory.setRemark(remarkTextbox.getValue());
 	}
 
 	public void setProductCategoryData(ProductCategory productCategory) {
 		nameLabel.setValue(productCategory.getName());
 		nameTextbox.setValue(productCategory.getName());
-//		parentIdLabel.setValue(productCategory.getParentId());
-//		parentIdTextbox.setValue(productCategory.getParentId());
-//		sortIndexLabel.setValue(productCategory.getSortIndex());
-//		sortIndexTextbox.setValue(productCategory.getSortIndex());
+		parentIdLabel.setValue(
+				productCategory.getParentCategory() == null ? "" : productCategory.getParentCategory().getName());
+		productCategoryChoose.setProductCategory(productCategory);
+		sortIndexLabel.setValue(String.valueOf(productCategory.getSortIndex()));
+		sortIndexTextbox.setValue(productCategory.getSortIndex());
 		remarkLabel.setValue(productCategory.getRemark());
 		remarkTextbox.setValue(productCategory.getRemark());
 	}
 
-	public void onSelect$productCategoryListbox() throws SuspendNotAllowedException, InterruptedException {
+	public void onSelect$productCategoryTree() throws SuspendNotAllowedException, InterruptedException {
 		edit = -1;
-		// productCategory = getSelectItem().getValue();
+		productCategory = productCategoryTree.getSelectedItem().getValue();
 		clearTextbox();
 		setProductCategoryData(productCategory);
 		enableTextbox(false);
@@ -271,14 +299,9 @@ public class ProductCategoryWindow extends BaseWindow {
 			Messagebox.show("产品分类名称不能为空！");
 			flag = false;
 		}
-//		if (parentIdTextbox.getValue().equals("")) {
-//			parentIdTextbox.focus();
-//			Messagebox.show("父类id不能为空！");
-//			flag = false;
-//		}
-		if (sortIndexTextbox.getValue().equals("")) {
-			sortIndexTextbox.focus();
-			Messagebox.show("排序不能为空！");
+		if (productCategoryChoose.getValue().equals("")) {
+			productCategoryChoose.focus();
+			Messagebox.show("上级不能为空！");
 			flag = false;
 		}
 		return flag;
