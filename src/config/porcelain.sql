@@ -10,10 +10,53 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-10-12 21:48:32
+Date: 2018-10-13 16:30:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for ba_address
+-- ----------------------------
+DROP TABLE IF EXISTS `ba_address`;
+CREATE TABLE `ba_address` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `contact` varchar(255) DEFAULT NULL COMMENT '联系人',
+  `contact_phone` varchar(255) DEFAULT NULL COMMENT '联系电话',
+  `address` text COMMENT '详细地址',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_user` varchar(255) DEFAULT NULL COMMENT '创建用户',
+  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
+  `update_user` varchar(255) DEFAULT NULL COMMENT '更新用户',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ba_address
+-- ----------------------------
+INSERT INTO `ba_address` VALUES ('1', '青旅肖君', '15099999692	', '广州市天河区体育西路191号中石化大厦B塔18楼1819室', '', '2018-10-13 00:11:54', 'admin', '2018-10-13 00:11:54', 'admin');
+
+-- ----------------------------
+-- Table structure for ba_admissible_area
+-- ----------------------------
+DROP TABLE IF EXISTS `ba_admissible_area`;
+CREATE TABLE `ba_admissible_area` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ba_admissible_area` varchar(255) DEFAULT NULL COMMENT '签证类型',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `create_user` varchar(255) NOT NULL COMMENT '创建人',
+  `update_date` datetime NOT NULL COMMENT '更新时间',
+  `update_user` varchar(255) NOT NULL COMMENT '更新人',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+-- Records of ba_admissible_area
+-- ----------------------------
+INSERT INTO `ba_admissible_area` VALUES ('2', '上海领区', '', '2018-10-13 00:11:05', 'admin', '2018-10-13 00:11:05', 'admin');
+INSERT INTO `ba_admissible_area` VALUES ('3', '北京领馆', '', '2018-10-13 00:11:16', 'admin', '2018-10-13 00:11:16', 'admin');
 
 -- ----------------------------
 -- Table structure for ba_position
@@ -43,6 +86,26 @@ INSERT INTO `ba_position` VALUES ('7', '签证专员(欧美澳新加)', '2018-10
 INSERT INTO `ba_position` VALUES ('8', '签证专员(其他贴纸)', '2018-10-11 23:22:15', 'admin', '2018-10-11 23:22:15', 'admin', '');
 INSERT INTO `ba_position` VALUES ('9', '签证专员(电子签证)', '2018-10-11 23:22:29', 'admin', '2018-10-11 23:22:29', 'admin', '');
 INSERT INTO `ba_position` VALUES ('10', '财务', '2018-10-11 23:22:34', 'admin', '2018-10-11 23:22:34', 'admin', '');
+
+-- ----------------------------
+-- Table structure for ba_visa_type
+-- ----------------------------
+DROP TABLE IF EXISTS `ba_visa_type`;
+CREATE TABLE `ba_visa_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ba_visa_type` varchar(255) DEFAULT NULL COMMENT '签证类型',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `create_user` varchar(255) NOT NULL COMMENT '创建人',
+  `update_date` datetime NOT NULL COMMENT '更新时间',
+  `update_user` varchar(255) NOT NULL COMMENT '更新人',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ba_visa_type
+-- ----------------------------
+INSERT INTO `ba_visa_type` VALUES ('1', '探亲访友签证', null, '2018-10-12 23:22:03', 'admin', '2018-10-12 23:22:05', 'admin');
 
 -- ----------------------------
 -- Table structure for message
@@ -115,12 +178,42 @@ CREATE TABLE `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL COMMENT '产品名称',
   `service_promise` varchar(255) DEFAULT NULL COMMENT '服务承诺',
+  `out_time` datetime DEFAULT NULL COMMENT '出行日期',
+  `package` varchar(255) DEFAULT NULL COMMENT '套餐',
+  `ba_visa_type_id` int(11) DEFAULT NULL COMMENT '签证类型id',
+  `line_customer_price` decimal(10,2) DEFAULT NULL COMMENT '直客价',
+  `peer_price` decimal(10,2) DEFAULT NULL COMMENT '同行价',
+  `cost_price` decimal(10,2) DEFAULT NULL COMMENT '成本价',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for product_category
+-- ----------------------------
+DROP TABLE IF EXISTS `product_category`;
+CREATE TABLE `product_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL COMMENT '产品分类名称',
+  `parent_id` int(11) DEFAULT NULL COMMENT '父类id',
+  `sort_index` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_user` varchar(255) DEFAULT NULL COMMENT '创建用户',
+  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
+  `update_user` varchar(255) DEFAULT NULL COMMENT '更新用户',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of product_category
+-- ----------------------------
+INSERT INTO `product_category` VALUES ('1', '全部', null, '0', null, '2018-10-13 15:55:37', 'admin', '2018-10-13 15:55:43', 'admin');
+INSERT INTO `product_category` VALUES ('2', '亚洲', '1', '0', null, '2018-10-13 15:56:06', 'admin', '2018-10-13 15:56:09', 'admin');
+INSERT INTO `product_category` VALUES ('3', '日本', '2', '0', null, '2018-10-13 15:56:26', 'admin', '2018-10-13 15:56:31', 'admin');
 
 -- ----------------------------
 -- Table structure for sys_group
@@ -163,7 +256,7 @@ CREATE TABLE `sys_group_menu` (
   KEY `fk_c6x8r5rrbtrqovqumf3awcifd` (`group_id`),
   KEY `index_sys_group_menu_menu_id` (`menu_id`),
   KEY `index_sys_group_menu_group_id` (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COMMENT='组菜单';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COMMENT='组菜单';
 
 -- ----------------------------
 -- Records of sys_group_menu
@@ -175,6 +268,10 @@ INSERT INTO `sys_group_menu` VALUES ('4', 'sys_group', '1', '2018-10-11 21:50:36
 INSERT INTO `sys_group_menu` VALUES ('5', 'sys_menu', '1', '2018-10-11 21:51:03', '2018-10-11 21:51:05', 'admin', 'admin');
 INSERT INTO `sys_group_menu` VALUES ('6', 'bu', '1', '2018-10-11 22:52:42', '2018-10-11 22:52:42', 'admin', 'admin');
 INSERT INTO `sys_group_menu` VALUES ('7', 'ba_position', '1', '2018-10-11 22:54:43', '2018-10-11 22:54:43', 'admin', 'admin');
+INSERT INTO `sys_group_menu` VALUES ('8', 'ba_admissible_area', '1', '2018-10-13 00:10:09', '2018-10-13 00:10:09', 'admin', 'admin');
+INSERT INTO `sys_group_menu` VALUES ('9', 'ba_address', '1', '2018-10-13 00:10:09', '2018-10-13 00:10:09', 'admin', 'admin');
+INSERT INTO `sys_group_menu` VALUES ('10', 'ba_visa_type', '1', '2018-10-13 00:10:09', '2018-10-13 00:10:09', 'admin', 'admin');
+INSERT INTO `sys_group_menu` VALUES ('11', 'product_category', '1', '2018-10-13 15:59:27', '2018-10-13 15:59:27', 'admin', 'admin');
 
 -- ----------------------------
 -- Table structure for sys_group_user
@@ -219,7 +316,7 @@ CREATE TABLE `sys_menu` (
   KEY `index_sys_menu_menu_id` (`menu_id`),
   KEY `index_sys_menu_parent_id` (`parent_id`),
   KEY `index_sys_menu_language_id` (`language_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COMMENT='系统菜单';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1 COMMENT='系统菜单';
 
 -- ----------------------------
 -- Records of sys_menu
@@ -231,6 +328,10 @@ INSERT INTO `sys_menu` VALUES ('7', 'sys_user', 'sys', '用户管理', '3', '', 
 INSERT INTO `sys_menu` VALUES ('8', 'sys_group', 'sys', '群组管理', '3', '', '/admin/group.zul', '', 'sys_group', '', '0');
 INSERT INTO `sys_menu` VALUES ('9', 'sys_menu', 'sys', '菜单管理', '3', '', '/admin/menu.zul', '', 'sys_menu', '', '0');
 INSERT INTO `sys_menu` VALUES ('10', 'ba_position', 'ba', '职位', '3', null, '/basedata/baPosition.zul', null, 'ba_position', '', '0');
+INSERT INTO `sys_menu` VALUES ('11', 'ba_visa_type', 'ba', '签证类型', '3', null, '/basedata/baVisaType.zul', null, 'ba_visa_type', '', '0');
+INSERT INTO `sys_menu` VALUES ('13', 'ba_address', 'ba', '供应商地址', '3', null, '/basedata/baAddress.zul', null, 'ba_address', '', '0');
+INSERT INTO `sys_menu` VALUES ('14', 'ba_admissible_area', 'ba', '受理区域', '3', null, '/basedata/baAdmissibleArea.zul', null, 'ba_admissible_area', '', '0');
+INSERT INTO `sys_menu` VALUES ('15', 'product_category', 'ba', '产品类型', '3', null, '/basedata/productCategory.zul', null, 'product_category', '', '0');
 
 -- ----------------------------
 -- Table structure for sys_user
