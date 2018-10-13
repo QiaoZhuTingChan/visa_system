@@ -35,6 +35,12 @@
 		</component-class>
 	</component>
 	<component>
+		<extends>bandbox</extends>
+		<component-name>productCategoryChoose</component-name>
+		<component-class>com.jyd.bms.components.ProductCategoryChoose
+		</component-class>
+	</component>
+	<component>
 		<extends>listbox</extends>
 		<component-name>baPositionListbox</component-name>
 		<component-class>com.jyd.bms.components.BaPositionListbox
