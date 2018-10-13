@@ -17,6 +17,7 @@ import com.jyd.bms.service.BaPositionService;
 import com.jyd.bms.tool.exception.DAOException;
 import com.jyd.bms.tool.zk.Listbox;
 import com.jyd.bms.tool.zk.ListitemRenderer;
+import com.jyd.bms.window.admin.component.ComponentInterface;
 
 /**
  * @category 职位
