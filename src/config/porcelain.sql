@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2018-10-13 16:30:32
+Date: 2018-10-15 21:37:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -50,13 +50,61 @@ CREATE TABLE `ba_admissible_area` (
   `update_date` datetime NOT NULL COMMENT '更新时间',
   `update_user` varchar(255) NOT NULL COMMENT '更新人',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='受理区域';
 
 -- ----------------------------
 -- Records of ba_admissible_area
 -- ----------------------------
 INSERT INTO `ba_admissible_area` VALUES ('2', '上海领区', '', '2018-10-13 00:11:05', 'admin', '2018-10-13 00:11:05', 'admin');
 INSERT INTO `ba_admissible_area` VALUES ('3', '北京领馆', '', '2018-10-13 00:11:16', 'admin', '2018-10-13 00:11:16', 'admin');
+
+-- ----------------------------
+-- Table structure for ba_data_template
+-- ----------------------------
+DROP TABLE IF EXISTS `ba_data_template`;
+CREATE TABLE `ba_data_template` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `src` varchar(255) DEFAULT NULL COMMENT '模板文档',
+  `ba_data_template` varchar(255) DEFAULT NULL COMMENT '名称',
+  `ba_model_type_id` int(11) DEFAULT NULL COMMENT '模板分类id',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_user` varchar(255) DEFAULT NULL COMMENT '创建用户',
+  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
+  `update_user` varchar(255) DEFAULT NULL COMMENT '更新用户',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='资料模板';
+
+-- ----------------------------
+-- Records of ba_data_template
+-- ----------------------------
+INSERT INTO `ba_data_template` VALUES ('1', 'f449909153994d249dd3a89163171922.xls', '证件', '11', '', '2018-10-15 20:31:03', 'admin', '2018-10-15 20:31:03', 'admin');
+INSERT INTO `ba_data_template` VALUES ('2', '8f8ac9daf84b4840a45c13026a157c76.xls', '护照', '11', '', '2018-10-15 20:38:57', 'admin', '2018-10-15 20:38:57', 'admin');
+INSERT INTO `ba_data_template` VALUES ('3', '9bc7199552ed42f09985b41af4a3847f.xls', '照片', '15', '', '2018-10-15 20:46:30', 'admin', '2018-10-15 20:48:01', 'admin');
+
+-- ----------------------------
+-- Table structure for ba_model_type
+-- ----------------------------
+DROP TABLE IF EXISTS `ba_model_type`;
+CREATE TABLE `ba_model_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ba_model_type` varchar(255) DEFAULT NULL COMMENT '职位名称',
+  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_user` varchar(255) DEFAULT NULL COMMENT '创建用户',
+  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
+  `update_user` varchar(255) DEFAULT NULL COMMENT '更新用户',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+-- Records of ba_model_type
+-- ----------------------------
+INSERT INTO `ba_model_type` VALUES ('11', '在职人员', '2018-10-14 19:56:47', 'admin', '2018-10-14 19:56:47', 'admin', '');
+INSERT INTO `ba_model_type` VALUES ('12', '自由职业', '2018-10-14 19:57:29', 'admin', '2018-10-14 19:57:29', 'admin', '');
+INSERT INTO `ba_model_type` VALUES ('13', '退休人员', '2018-10-14 19:57:42', 'admin', '2018-10-14 19:57:42', 'admin', '');
+INSERT INTO `ba_model_type` VALUES ('14', '在校学生', '2018-10-14 19:57:58', 'admin', '2018-10-14 19:57:58', 'admin', '');
+INSERT INTO `ba_model_type` VALUES ('15', '学龄前儿童', '2018-10-14 19:58:38', 'admin', '2018-10-14 19:58:38', 'admin', '');
 
 -- ----------------------------
 -- Table structure for ba_position
@@ -176,14 +224,25 @@ INSERT INTO `message_type` VALUES ('2', '公告', 'com.jyd.bms.message.PublicMes
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL COMMENT '产品名称',
-  `service_promise` varchar(255) DEFAULT NULL COMMENT '服务承诺',
-  `out_time` datetime DEFAULT NULL COMMENT '出行日期',
-  `package` varchar(255) DEFAULT NULL COMMENT '套餐',
-  `ba_visa_type_id` int(11) DEFAULT NULL COMMENT '签证类型id',
+  `product_name` varchar(255) DEFAULT NULL COMMENT '产品名称',
   `line_customer_price` decimal(10,2) DEFAULT NULL COMMENT '直客价',
   `peer_price` decimal(10,2) DEFAULT NULL COMMENT '同行价',
-  `cost_price` decimal(10,2) DEFAULT NULL COMMENT '成本价',
+  `market_price` decimal(10,2) DEFAULT NULL COMMENT '市场价',
+  `img` varchar(255) DEFAULT NULL COMMENT '产品图',
+  `ba_visa_type_id` int(11) DEFAULT NULL COMMENT '签证类型',
+  `ba_admissible_area_id` int(11) DEFAULT NULL COMMENT '受理领区',
+  `admissible_area_type` varchar(255) DEFAULT NULL COMMENT '领区划分',
+  `out_cycle` varchar(255) DEFAULT NULL COMMENT '出签周期',
+  `residence_time` varchar(255) DEFAULT NULL COMMENT '停留时间',
+  `effective_time` varchar(255) DEFAULT NULL COMMENT '有效时间',
+  `entry_times` int(11) DEFAULT NULL COMMENT '入境次数',
+  `face_sign` bit(1) DEFAULT NULL COMMENT '是否面签',
+  `ba_address_id` int(11) DEFAULT NULL COMMENT '供应商地址',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
+  `create_user` varchar(255) DEFAULT NULL COMMENT '创建人',
+  `update_date` datetime DEFAULT NULL COMMENT '更新时间',
+  `update_user` varchar(255) DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -206,7 +265,7 @@ CREATE TABLE `product_category` (
   `update_date` datetime DEFAULT NULL COMMENT '更新时间',
   `update_user` varchar(255) DEFAULT NULL COMMENT '更新用户',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product_category
@@ -214,6 +273,22 @@ CREATE TABLE `product_category` (
 INSERT INTO `product_category` VALUES ('1', '全部', null, '0', null, '2018-10-13 15:55:37', 'admin', '2018-10-13 15:55:43', 'admin');
 INSERT INTO `product_category` VALUES ('2', '亚洲', '1', '0', null, '2018-10-13 15:56:06', 'admin', '2018-10-13 15:56:09', 'admin');
 INSERT INTO `product_category` VALUES ('3', '日本', '2', '0', null, '2018-10-13 15:56:26', 'admin', '2018-10-13 15:56:31', 'admin');
+INSERT INTO `product_category` VALUES ('4', '香港', '2', '0', '', '2018-10-13 16:57:44', 'admin', '2018-10-13 16:57:44', 'admin');
+INSERT INTO `product_category` VALUES ('5', '非洲', '1', '0', '', '2018-10-13 16:57:58', 'admin', '2018-10-13 16:57:58', 'admin');
+INSERT INTO `product_category` VALUES ('6', '巴马', '5', '0', '', '2018-10-13 16:58:09', 'admin', '2018-10-13 16:58:09', 'admin');
+
+-- ----------------------------
+-- Table structure for pro_supplier
+-- ----------------------------
+DROP TABLE IF EXISTS `pro_supplier`;
+CREATE TABLE `pro_supplier` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='供应商';
+
+-- ----------------------------
+-- Records of pro_supplier
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for sys_group
@@ -256,7 +331,7 @@ CREATE TABLE `sys_group_menu` (
   KEY `fk_c6x8r5rrbtrqovqumf3awcifd` (`group_id`),
   KEY `index_sys_group_menu_menu_id` (`menu_id`),
   KEY `index_sys_group_menu_group_id` (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COMMENT='组菜单';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1 COMMENT='组菜单';
 
 -- ----------------------------
 -- Records of sys_group_menu
@@ -272,6 +347,8 @@ INSERT INTO `sys_group_menu` VALUES ('8', 'ba_admissible_area', '1', '2018-10-13
 INSERT INTO `sys_group_menu` VALUES ('9', 'ba_address', '1', '2018-10-13 00:10:09', '2018-10-13 00:10:09', 'admin', 'admin');
 INSERT INTO `sys_group_menu` VALUES ('10', 'ba_visa_type', '1', '2018-10-13 00:10:09', '2018-10-13 00:10:09', 'admin', 'admin');
 INSERT INTO `sys_group_menu` VALUES ('11', 'product_category', '1', '2018-10-13 15:59:27', '2018-10-13 15:59:27', 'admin', 'admin');
+INSERT INTO `sys_group_menu` VALUES ('12', 'ba_model_type', '1', '2018-10-14 19:56:31', '2018-10-14 19:56:31', 'admin', 'admin');
+INSERT INTO `sys_group_menu` VALUES ('13', 'ba_data_template', '1', '2018-10-14 22:23:06', '2018-10-14 22:23:06', 'admin', 'admin');
 
 -- ----------------------------
 -- Table structure for sys_group_user
@@ -316,7 +393,7 @@ CREATE TABLE `sys_menu` (
   KEY `index_sys_menu_menu_id` (`menu_id`),
   KEY `index_sys_menu_parent_id` (`parent_id`),
   KEY `index_sys_menu_language_id` (`language_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1 COMMENT='系统菜单';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COMMENT='系统菜单';
 
 -- ----------------------------
 -- Records of sys_menu
@@ -332,6 +409,8 @@ INSERT INTO `sys_menu` VALUES ('11', 'ba_visa_type', 'ba', '签证类型', '3', 
 INSERT INTO `sys_menu` VALUES ('13', 'ba_address', 'ba', '供应商地址', '3', null, '/basedata/baAddress.zul', null, 'ba_address', '', '0');
 INSERT INTO `sys_menu` VALUES ('14', 'ba_admissible_area', 'ba', '受理区域', '3', null, '/basedata/baAdmissibleArea.zul', null, 'ba_admissible_area', '', '0');
 INSERT INTO `sys_menu` VALUES ('15', 'product_category', 'ba', '产品类型', '3', null, '/basedata/productCategory.zul', null, 'product_category', '', '0');
+INSERT INTO `sys_menu` VALUES ('16', 'ba_model_type', 'ba', '模板分类', '3', null, '/basedata/baModelType.zul', null, 'ba_model_type', '', '0');
+INSERT INTO `sys_menu` VALUES ('17', 'ba_data_template', 'ba', '资料模板', '3', null, '/basedata/baDataTemplate.zul', null, 'ba_data_template', '', '0');
 
 -- ----------------------------
 -- Table structure for sys_user
