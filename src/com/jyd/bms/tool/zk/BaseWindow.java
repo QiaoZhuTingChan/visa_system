@@ -64,18 +64,18 @@ public abstract class BaseWindow extends GenericForwardWindow {
 			Menu menu = new Menu();
 			menu.setMenuId(menuId);
 			// 根据用户查找用户组
-			boolean flag=false;
+			boolean flag = false;
 			List<GroupUser> groupList = groupUserService.getGroupUserByUser(user);
 			for (GroupUser groupUser : groupList) {
 				// 判断用户所在组是否具有菜单的权限
 				if (groupMenuService.findGroupMenu(groupUser.getGroup(), menu) != null) {
-					flag=true;
+					flag = true;
 				}
 			}
-			if(flag||menuId.equals("index")) {
+			if (flag || menuId.equals("index")) {
 				firstLoad();
 				return;
-			}else {
+			} else {
 				Executions.sendRedirect("/permissions.zul");
 				return;
 			}
@@ -100,13 +100,7 @@ public abstract class BaseWindow extends GenericForwardWindow {
 	 * @return
 	 */
 	public String getRootPath() {
-		if (Environment.getFileProcessType().equals("webPath") == false) {
-			HttpServletRequest request = (HttpServletRequest) Executions.getCurrent().getNativeRequest();
-			String path = request.getSession().getServletContext().getRealPath("/");
-			return path;
-		} else {
-			return Environment.getFilePath();
-		}
+		return Environment.getFilePath();
 	}
 
 	/**
@@ -118,17 +112,6 @@ public abstract class BaseWindow extends GenericForwardWindow {
 		return path + "templates/";
 	}
 
-	public String getHttpPath() {
-		HttpServletRequest request = (HttpServletRequest) Executions.getCurrent().getNativeRequest();
-		StringBuilder str = new StringBuilder();
-		str.append(request.getScheme());
-		str.append("://");
-		str.append(request.getServerName());
-		str.append(":" + request.getServerPort());
-		str.append(request.getContextPath());
-		return str.toString();
-	}
-
 	/**
 	 * 获取输出文件路径
 	 * 
@@ -137,6 +120,7 @@ public abstract class BaseWindow extends GenericForwardWindow {
 	public String getOutputPath() {
 		return this.getRootPath() + "output/";
 	}
+
 	/**
 	 * 获取第三方html文件路径
 	 * 

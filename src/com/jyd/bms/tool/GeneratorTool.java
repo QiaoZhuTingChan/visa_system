@@ -24,7 +24,7 @@ public class GeneratorTool {
 	public static final String name = "com.mysql.jdbc.Driver";
 	public static final String user = "root";
 	public static final String password = "123456";
-	public static final String tableName = "product_category";
+	public static final String tableName = "ba_data_template";
 	public static final String dataBase = "porcelain";
 	public static boolean dataFlag = true;
 	public static boolean timeStampflag = true;

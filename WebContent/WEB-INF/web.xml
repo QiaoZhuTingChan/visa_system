@@ -3,18 +3,19 @@
 <!-- web.xml Purpose: Description: History: Wed Dec 29 12:13:00 2004, Created 
 	by tomyeh Copyright (C) 2004 Potix Corporation. All Rights Reserved. -->
 
-<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+<web-app version="3.1" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance http://www.springmodules.org/schema/cache/springmodules-cache.xsd http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee  
+　　http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd">
 
 	<description><![CDATA[BMS]]></description>
 	<display-name>BMS</display-name>
-
 	<!-- //// -->
 	<!-- ZK -->
 	<listener>
 		<description>ZK listener for session cleanup</description>
-		<listener-class>org.zkoss.zk.ui.http.HttpSessionListener</listener-class>
+		<listener-class>org.zkoss.zk.ui.http.HttpSessionListener
+		</listener-class>
 	</listener>
 	<servlet>
 		<description>ZK loader for ZUML pages</description>
@@ -89,7 +90,8 @@
 		on since zksandbox uses DSP to generate CSS. -->
 	<servlet>
 		<servlet-name>dspLoader</servlet-name>
-		<servlet-class>org.zkoss.web.servlet.dsp.InterpreterServlet</servlet-class>
+		<servlet-class>org.zkoss.web.servlet.dsp.InterpreterServlet
+		</servlet-class>
 		<init-param>
 			<param-name>class-resource</param-name>
 			<param-value>true</param-value>
@@ -170,13 +172,16 @@
 	<filter>
 		<filter-name>SpringOpenSessionInViewFilter</filter-name>
 		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+		<async-supported>true</async-supported>
 	</filter>
 	<filter-mapping>
 		<filter-name>SpringOpenSessionInViewFilter</filter-name>
 		<url-pattern>/*</url-pattern>
+		 <dispatcher>ASYNC</dispatcher>
 	</filter-mapping>
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
 	</listener>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -187,29 +192,21 @@
 	<!-- spring过滤乱码 -->
 	<filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>utf-8</param-value>
 		</init-param>
+		<async-supported>true</async-supported>
 	</filter>
 	<filter-mapping>
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
+		 <dispatcher>ASYNC</dispatcher>
 	</filter-mapping>
-	<!-- 
-	<servlet>
-		<servlet-name>springmvc</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:config/spring.xml</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>springmvc</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
-	 -->
+	<!-- <servlet> <servlet-name>springmvc</servlet-name> <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> 
+		<init-param> <param-name>contextConfigLocation</param-name> <param-value>classpath:config/spring.xml</param-value> 
+		</init-param> <load-on-startup>1</load-on-startup> </servlet> <servlet-mapping> 
+		<servlet-name>springmvc</servlet-name> <url-pattern>*.do</url-pattern> </servlet-mapping> -->
 </web-app>

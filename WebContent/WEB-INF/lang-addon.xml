@@ -48,6 +48,12 @@
 	</component>
 	<component>
 		<extends>listbox</extends>
+		<component-name>baModelTypeListbox</component-name>
+		<component-class>com.jyd.bms.components.BaModelTypeListbox
+		</component-class>
+	</component>
+	<component>
+		<extends>listbox</extends>
 		<component-name>baAddressListbox</component-name>
 		<component-class>com.jyd.bms.components.BaAddressListbox
 		</component-class>

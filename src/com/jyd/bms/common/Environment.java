@@ -32,9 +32,8 @@ public class Environment {
 	public static final String ACCESS_KEYID = "AccessKeyID";
 	public static final String ACCESS_KEYSECRET = "AccessKeySecret";
 
-	public static final String FILE_PROCESS_TYPE = "fileProcessType";
 	public static final String FILE_PATH = "filePath";
-	public static final String WEB_FILE_PATH = "webFilePath";
+	public static final String HTTP_PATH = "httpPath";
 
 	// 白骑士
 	public static final String HTML_PHYSICS_PATH = "htmlPhysicsPath";
@@ -54,7 +53,7 @@ public class Environment {
 	// 第三方gps
 	public static final String GPS_IP = "gpsIp";
 	public static final String GPS_KEY = "gpsKey";
-	
+
 	// 聚信立
 	public static final String JUXINLI_CLIENT_SECRET = "clientSecret";
 	// 蜜蜂
@@ -92,7 +91,7 @@ public class Environment {
 	private Environment() {
 	}
 
-	//JUXINLI_CLIENT_SECRET
+	// JUXINLI_CLIENT_SECRET
 	public static String getClientSecret() {
 		String str = "";
 		try {
@@ -102,7 +101,7 @@ public class Environment {
 		}
 		return str;
 	}
-	
+
 	public static String getPotHostUrl() {
 		String str = "";
 		try {
@@ -362,21 +361,6 @@ public class Environment {
 	}
 
 	/**
-	 * 文件处理类型
-	 * 
-	 * @return
-	 */
-	public static String getFileProcessType() {
-		String fileProcessType = "";
-		try {
-			fileProcessType = CONFIGURATION.getString(FILE_PROCESS_TYPE);
-		} catch (Exception e) {
-			log.error("找不到参数:fileProcessType", e);
-		}
-		return fileProcessType;
-	}
-
-	/**
 	 * 文件存入绝对路径
 	 * 
 	 * @return
@@ -396,17 +380,16 @@ public class Environment {
 	 * 
 	 * @return
 	 */
-	public static String getWebFilePath() {
+	public static String getHttpPath() {
 		String webFilePath = "";
 		try {
-			webFilePath = CONFIGURATION.getString(WEB_FILE_PATH);
+			webFilePath = CONFIGURATION.getString(HTTP_PATH);
 		} catch (Exception e) {
-			log.error("找不到参数:webFilePath", e);
+			log.error("找不到参数:httpPath", e);
 		}
 		return webFilePath;
 	}
 
-	
 	/*
 	 * 白骑士5个
 	 */
@@ -419,6 +402,7 @@ public class Environment {
 		}
 		return webFilePath;
 	}
+
 	public static String getHtmlRelativePath() {
 		String webFilePath = "";
 		try {
@@ -428,6 +412,7 @@ public class Environment {
 		}
 		return webFilePath;
 	}
+
 	public static String getBaiQiShiPartnerId() {
 		String webFilePath = "";
 		try {
@@ -437,6 +422,7 @@ public class Environment {
 		}
 		return webFilePath;
 	}
+
 	public static String getBaiQiShiVerifyKey() {
 		String webFilePath = "";
 		try {
@@ -446,6 +432,7 @@ public class Environment {
 		}
 		return webFilePath;
 	}
+
 	public static String getBaiQiShiUrl() {
 		String webFilePath = "";
 		try {
@@ -468,6 +455,7 @@ public class Environment {
 		}
 		return str;
 	}
+
 	public static String getTongDunHtmlRelativePath() {
 		String str = "";
 		try {
@@ -477,6 +465,7 @@ public class Environment {
 		}
 		return str;
 	}
+
 	public static String getTongDunPartnerCode() {
 		String str = "";
 		try {
@@ -486,6 +475,7 @@ public class Environment {
 		}
 		return str;
 	}
+
 	public static String getTongDunParnterKey() {
 		String str = "";
 		try {
@@ -495,6 +485,7 @@ public class Environment {
 		}
 		return str;
 	}
+
 	public static String getTongDunUrl() {
 		String str = "";
 		try {
@@ -504,6 +495,7 @@ public class Environment {
 		}
 		return str;
 	}
+
 	public static String getTongDunAppName() {
 		String str = "";
 		try {
@@ -513,7 +505,7 @@ public class Environment {
 		}
 		return str;
 	}
-	
+
 	/*
 	 * 第三方gps 2个
 	 */
@@ -526,6 +518,7 @@ public class Environment {
 		}
 		return str;
 	}
+
 	public static String getGpsKey() {
 		String str = "";
 		try {
@@ -535,7 +528,6 @@ public class Environment {
 		}
 		return str;
 	}
-	
 
 	public static String getEndpoint() {
 		String endpoint = "";
