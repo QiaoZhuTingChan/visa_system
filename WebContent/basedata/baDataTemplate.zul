@@ -72,7 +72,7 @@
 										}
 										String fileName = media.getName();
 										String fileType=fileName.substring(fileName.lastIndexOf("."), fileName.length());
-										if (fileType.equalsIgnoreCase(".pdf") || fileType.equalsIgnoreCase(".doc")||fileType.equalsIgnoreCase(".txt")||fileType.equalsIgnoreCase(".xls")||fileType.equalsIgnoreCase(".docx")) {
+										if (fileType.equalsIgnoreCase(".pdf") || fileType.equalsIgnoreCase(".doc")||fileType.equalsIgnoreCase(".txt")||fileType.equalsIgnoreCase(".xls")||fileType.equalsIgnoreCase(".xlsx")||fileType.equalsIgnoreCase(".docx")) {
 												uploadWindow.onUpload(event);
 										} else {
 											Messagebox.show("不是可支持的文件类型");
