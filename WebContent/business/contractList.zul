@@ -1,0 +1,67 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<script src="/script/enter.js" type="text/javascript" />
+	<script src="/script/jquery-1.4.1.js" type="text/javascript" />
+	<window border="normal" width="100%" height="100%"
+		use="com.jyd.bms.window.contract.ContractListWindow">
+		<borderlayout width="100%" height="100%">
+			<center>
+				<borderlayout width="100%" height="100%">
+					<north style="background:#F0FAFF">
+						<hbox pack="right" width="100%">
+							<hbox>								
+								<baProductClassifyListbox
+									id="productClassifyListbox" />
+								<label value="审批状态" />
+								<listbox id="stateListbox"
+									mold="select" />
+								<textbox id="conditionTextbox" />
+								<button label="查询" id="searchButton" />
+								<button label="续期" id="renewalButton" />
+								<button label="修改"
+									id="editContractButton" />
+								<button label="查看"
+									id="viewContractButton" />
+								<button label="打印"
+									id="printContractButton" />
+								<button label="重打印"
+									id="rePrintContractButton" />
+								<button label="付款申请书信息录入"
+									id="inputContractPayApplyButton" />
+								<button label="上传归档"
+									id="contractFileButton" />
+								<button label="查看归档"
+									id="contractViewFileButton" />
+								<button label="催收" id="overButton" />
+								<button label="结清"
+									id="earlySettlementButton" />
+								<button label="作废" id="invalidButton" />
+							</hbox>
+						</hbox>
+					</north>
+					<center flex="true">
+						<listbox id="contractListbox" fixedLayout="true"
+							vflex="true" width="100%">
+							<listhead sizable="true">
+								<listheader label="合同编号" />
+								<listheader label="门店" />
+								<listheader label="姓名" />
+								<listheader label="身份证" />
+								<listheader label="地址" />
+								<listheader label="电话号码" />
+								<listheader label="状态" />
+								<listheader label="逾期总额" />
+								<listheader label="产品类型" />
+								<listheader label="借款期限" />
+								<listheader label="借款金额" />
+								<listheader label="放款开始日期" />
+								<listheader label="放款结束日期" />
+							</listhead>
+						</listbox>
+					</center>
+					<south id="southPaging"></south>
+				</borderlayout>
+			</center>
+		</borderlayout>
+	</window>
+</zk>

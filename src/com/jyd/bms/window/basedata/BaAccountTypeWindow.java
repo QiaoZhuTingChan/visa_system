@@ -15,9 +15,9 @@ import org.zkoss.zul.Listitem;
 import org.zkoss.zul.ListitemRenderer;
 import org.zkoss.zul.South;
 import org.zkoss.zul.Textbox;
-import com.jyd.bms.bean.BaAddress;
+import com.jyd.bms.bean.BaAccountType;
 import com.jyd.bms.bean.User;
-import com.jyd.bms.service.BaAddressService;
+import com.jyd.bms.service.BaAccountTypeService;
 import com.jyd.bms.tool.exception.CreateException;
 import com.jyd.bms.tool.exception.DAOException;
 import com.jyd.bms.tool.exception.UpdateException;
@@ -29,10 +29,10 @@ import com.jyd.bms.tool.zk.PagingControlComponentModelList;
 import com.jyd.bms.tool.zk.UserSession;
 
 /**
- * @category Generated 2018-10-12 23:30:12 by GeneratedTool
+ * @category Generated 2018-10-15 22:36:59 by GeneratedTool
  * @author mjy
  */
-public class BaAddressWindow extends BaseWindow {
+public class BaAccountTypeWindow extends BaseWindow {
 	private Button addButton;
 	private Button editButton;
 	private Button cancelButton;
@@ -41,49 +41,45 @@ public class BaAddressWindow extends BaseWindow {
 	private Textbox conditionTextbox;
 	private String condition = "";
 	private South southPaging;
-	private Label contactLabel;
-	private Textbox contactTextbox;
-	private Label contactPhoneLabel;
-	private Textbox contactPhoneTextbox;
-	private Label addressLabel;
-	private Textbox addressTextbox;
+	private Label baAccountTypeLabel;
+	private Textbox baAccountTypeTextbox;
 	private Label remarkLabel;
 	private Textbox remarkTextbox;
-	private Listbox baAddressListbox;
-	private BaAddress baAddress;
-	private BaAddressService baAddressService;
-	private List<BaAddress> baAddresslist = new ArrayList<BaAddress>();
-	private static final Logger log = LoggerFactory.getLogger(BaAddressWindow.class);
+	private Listbox baAccountTypeListbox;
+	private BaAccountType baAccountType;
+	private BaAccountTypeService baAccountTypeService;
+	private List<BaAccountType> baAccountTypelist = new ArrayList<BaAccountType>();
+	private static final Logger log = LoggerFactory.getLogger(BaAccountTypeWindow.class);
 	private int edit = 0;
 
-	public BaAddressWindow() {
-		this.menuId = "ba_address";
+	public BaAccountTypeWindow() {
+		this.menuId = "ba_account_type";
 	}
 
 	public Listitem getSelectItem() {
-		return baAddressListbox.getSelectedItem();
+		return baAccountTypeListbox.getSelectedItem();
 	}
 
 	public void initUI() {
-		baAddressService = getBean("BaAddressService");
-		baAddressListbox.setItemRenderer(new BaAddressRenderer());
+		baAccountTypeService = getBean("BaAccountTypeService");
+		baAccountTypeListbox.setItemRenderer(new BaAccountTypeRenderer());
 	}
 
 	@Override
 	public void initData() {
 		try {
-			PagingControlComponentModelList pagingModelList = new PagingControlComponentModelList(baAddressService,
-					"getPagingBaAddress", new Object[] { condition });
+			PagingControlComponentModelList pagingModelList = new PagingControlComponentModelList(baAccountTypeService,
+					"getPagingBaAccountType", new Object[] { condition });
 			if (gridPaging == null) {
-				gridPaging = new GridPaging(baAddressListbox, pagingModelList, 20);
+				gridPaging = new GridPaging(baAccountTypeListbox, pagingModelList, 20);
 			} else {
 				gridPaging.setPagingControlComponentModel(pagingModelList, 20);
 			}
-			gridPaging.setTotalSize(baAddressService.getBaAddressCount(condition));
+			gridPaging.setTotalSize(baAccountTypeService.getBaAccountTypeCount(condition));
 			gridPaging.setDetailed(true);
 			gridPaging.setParent(southPaging);
 		} catch (DAOException e) {
-			log.error("BaAddressWindow", e);
+			log.error("BaAccountTypeWindow", e);
 			Messagebox.error("获取数据出错了!");
 		} catch (Exception e) {
 			log.error("AssetsTypeWindow", e);
@@ -101,12 +97,8 @@ public class BaAddressWindow extends BaseWindow {
 	}
 
 	public void enableTextbox(boolean flag) {
-		contactLabel.setVisible(!flag);
-		contactTextbox.setVisible(flag);
-		contactPhoneLabel.setVisible(!flag);
-		contactPhoneTextbox.setVisible(flag);
-		addressLabel.setVisible(!flag);
-		addressTextbox.setVisible(flag);
+		baAccountTypeLabel.setVisible(!flag);
+		baAccountTypeTextbox.setVisible(flag);
 		remarkLabel.setVisible(!flag);
 		remarkTextbox.setVisible(flag);
 	}
@@ -145,39 +137,29 @@ public class BaAddressWindow extends BaseWindow {
 	}
 
 	public void clearTextbox() {
-		contactLabel.setValue("");
-		contactTextbox.setValue("");
-		contactPhoneLabel.setValue("");
-		contactPhoneTextbox.setValue("");
-		addressLabel.setValue("");
-		addressTextbox.setValue("");
+		baAccountTypeLabel.setValue("");
+		baAccountTypeTextbox.setValue("");
 		remarkLabel.setValue("");
 		remarkTextbox.setValue("");
 	}
 
-	public void setBaAddressValue(BaAddress baAddress) {
-		baAddress.setContact(contactTextbox.getValue());
-		baAddress.setContactPhone(contactPhoneTextbox.getValue());
-		baAddress.setAddress(addressTextbox.getValue());
-		baAddress.setRemark(remarkTextbox.getValue());
+	public void setBaAccountTypeValue(BaAccountType baAccountType) {
+		baAccountType.setBaAccountType(baAccountTypeTextbox.getValue());
+		baAccountType.setRemark(remarkTextbox.getValue());
 	}
 
-	public void setBaAddressData(BaAddress baAddress) {
-		contactLabel.setValue(baAddress.getContact());
-		contactTextbox.setValue(baAddress.getContact());
-		contactPhoneLabel.setValue(baAddress.getContactPhone());
-		contactPhoneTextbox.setValue(baAddress.getContactPhone());
-		addressLabel.setValue(baAddress.getAddress());
-		addressTextbox.setValue(baAddress.getAddress());
-		remarkLabel.setValue(baAddress.getRemark());
-		remarkTextbox.setValue(baAddress.getRemark());
+	public void setBaAccountTypeData(BaAccountType baAccountType) {
+		baAccountTypeLabel.setValue(baAccountType.getBaAccountType());
+		baAccountTypeTextbox.setValue(baAccountType.getBaAccountType());
+		remarkLabel.setValue(baAccountType.getRemark());
+		remarkTextbox.setValue(baAccountType.getRemark());
 	}
 
-	public void onSelect$baAddressListbox() throws SuspendNotAllowedException, InterruptedException {
+	public void onSelect$baAccountTypeListbox() throws SuspendNotAllowedException, InterruptedException {
 		edit = -1;
-		baAddress = getSelectItem().getValue();
+		baAccountType = getSelectItem().getValue();
 		clearTextbox();
-		setBaAddressData(baAddress);
+		setBaAccountTypeData(baAccountType);
 		enableTextbox(false);
 		enableButton("select");
 	}
@@ -203,19 +185,9 @@ public class BaAddressWindow extends BaseWindow {
 
 	public boolean checkInput() {
 		boolean flag = true;
-		if (contactTextbox.getValue().equals("")) {
-			contactTextbox.focus();
-			Messagebox.show("联系人不能为空！");
-			flag = false;
-		}
-		if (contactPhoneTextbox.getValue().equals("")) {
-			contactPhoneTextbox.focus();
-			Messagebox.show("联系电话不能为空！");
-			flag = false;
-		}
-		if (addressTextbox.getValue().equals("")) {
-			addressTextbox.focus();
-			Messagebox.show("详细地址不能为空！");
+		if (baAccountTypeTextbox.getValue().equals("")) {
+			baAccountTypeTextbox.focus();
+			Messagebox.show("账户名称不能为空！");
 			flag = false;
 		}
 		return flag;
@@ -234,44 +206,38 @@ public class BaAddressWindow extends BaseWindow {
 				return;
 			}
 			if (edit == 0) {
-				baAddress = new BaAddress();
-				setBaAddressValue(baAddress);
-				baAddress.setCreateDate(date);
-				baAddress.setCreateUser(user);
-				baAddress.setUpdateDate(date);
-				baAddress.setUpdateUser(user);
-				baAddressService.add(baAddress);
+				baAccountType = new BaAccountType();
+				setBaAccountTypeValue(baAccountType);
+				baAccountType.setCreateDate(date);
+				baAccountType.setCreateUser(user);
+				baAccountType.setUpdateDate(date);
+				baAccountType.setUpdateUser(user);
+				baAccountTypeService.add(baAccountType);
 			} else {
-				setBaAddressValue(baAddress);
-				baAddress.setUpdateDate(date);
-				baAddress.setUpdateUser(user);
-				baAddressService.update(baAddress);
+				setBaAccountTypeValue(baAccountType);
+				baAccountType.setUpdateDate(date);
+				baAccountType.setUpdateUser(user);
+				baAccountTypeService.update(baAccountType);
 			}
 			onClick$cancelButton();
 			initData();
 		} catch (CreateException e) {
-			log.error("baAddressWindow", e);
+			log.error("baAccountTypeWindow", e);
 		} catch (UpdateException e) {
-			log.error("baAddressWindow", e);
+			log.error("baAccountTypeWindow", e);
 		}
 	}
 
-	class BaAddressRenderer implements ListitemRenderer {
+	class BaAccountTypeRenderer implements ListitemRenderer {
 		public void render(Listitem arg0, Object arg1, int arg2) throws Exception {
-			BaAddress baAddress = (BaAddress) arg1;
-			Listcell contactCell = new Listcell();
-			contactCell.setParent(arg0);
-			new Label(baAddress.getContact()).setParent(contactCell);
-			Listcell contactPhoneCell = new Listcell();
-			contactPhoneCell.setParent(arg0);
-			new Label(baAddress.getContactPhone()).setParent(contactPhoneCell);
-			Listcell addressCell = new Listcell();
-			addressCell.setParent(arg0);
-			new Label(baAddress.getAddress()).setParent(addressCell);
+			BaAccountType baAccountType = (BaAccountType) arg1;
+			Listcell baAccountTypeCell = new Listcell();
+			baAccountTypeCell.setParent(arg0);
+			new Label(baAccountType.getBaAccountType()).setParent(baAccountTypeCell);
 			Listcell remarkCell = new Listcell();
 			remarkCell.setParent(arg0);
-			new Label(baAddress.getRemark()).setParent(remarkCell);
-			arg0.setValue(baAddress);
+			new Label(baAccountType.getRemark()).setParent(remarkCell);
+			arg0.setValue(baAccountType);
 		}
 	}
 }

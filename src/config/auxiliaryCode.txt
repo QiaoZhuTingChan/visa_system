@@ -1,0 +1,430 @@
+<h:tr>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="产品名称" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder">
+<label value="" id="productNameLabel" visible="true" />
+<textbox id="productNameTextbox" visible="false" /></h:td>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="直客价" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder">
+<label value="" id="lineCustomerPriceLabel" visible="true" />
+<textbox id="lineCustomerPriceTextbox" visible="false" /></h:td>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="同行价" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder">
+<label value="" id="peerPriceLabel" visible="true" />
+<textbox id="peerPriceTextbox" visible="false" /></h:td>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="市场价" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder">
+<label value="" id="marketPriceLabel" visible="true" />
+<textbox id="marketPriceTextbox" visible="false" /></h:td>
+</h:tr>
+<h:tr>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="产品图" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder">
+<label value="" id="imgLabel" visible="true" />
+<textbox id="imgTextbox" visible="false" /></h:td>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="签证类型" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder">
+<label value="" id="baVisaTypeIdLabel" visible="true" />
+<textbox id="baVisaTypeIdTextbox" visible="false" /></h:td>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="受理领区" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder">
+<label value="" id="baAdmissibleAreaIdLabel" visible="true" />
+<textbox id="baAdmissibleAreaIdTextbox" visible="false" /></h:td>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="领区划分" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder">
+<label value="" id="admissibleAreaTypeLabel" visible="true" />
+<textbox id="admissibleAreaTypeTextbox" visible="false" /></h:td>
+</h:tr>
+<h:tr>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="出签周期" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder">
+<label value="" id="outCycleLabel" visible="true" />
+<textbox id="outCycleTextbox" visible="false" /></h:td>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="停留时间" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder">
+<label value="" id="residenceTimeLabel" visible="true" />
+<textbox id="residenceTimeTextbox" visible="false" /></h:td>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="有效时间" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder">
+<label value="" id="effectiveTimeLabel" visible="true" />
+<textbox id="effectiveTimeTextbox" visible="false" /></h:td>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="入境次数" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder">
+<label value="" id="entryTimesLabel" visible="true" />
+<textbox id="entryTimesTextbox" visible="false" /></h:td>
+</h:tr>
+<h:tr>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="是否面签" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder">
+<label value="" id="faceSignLabel" visible="true" />
+<textbox id="faceSignTextbox" visible="false" /></h:td>
+<h:td width="150px" class="tdEvennoBorder"><hbox><label value="备注" /></hbox></h:td><h:td width="150px" class="tdOddnoBorder" colspan="5">
+<label value="" id="remarkLabel" visible="true" />
+<textbox id="remarkTextbox" visible="false" /></h:td>
+</h:tr>
+
+private Label productNameLabel;
+//产品名称
+private Textbox productNameTextbox;
+private Label lineCustomerPriceLabel;
+//直客价
+private Textbox lineCustomerPriceTextbox;
+private Label peerPriceLabel;
+//同行价
+private Textbox peerPriceTextbox;
+private Label marketPriceLabel;
+//市场价
+private Textbox marketPriceTextbox;
+private Label imgLabel;
+//产品图
+private Textbox imgTextbox;
+private Label baVisaTypeIdLabel;
+//签证类型
+private Textbox baVisaTypeIdTextbox;
+private Label baAdmissibleAreaIdLabel;
+//受理领区
+private Textbox baAdmissibleAreaIdTextbox;
+private Label admissibleAreaTypeLabel;
+//领区划分
+private Textbox admissibleAreaTypeTextbox;
+private Label outCycleLabel;
+//出签周期
+private Textbox outCycleTextbox;
+private Label residenceTimeLabel;
+//停留时间
+private Textbox residenceTimeTextbox;
+private Label effectiveTimeLabel;
+//有效时间
+private Textbox effectiveTimeTextbox;
+private Label entryTimesLabel;
+//入境次数
+private Textbox entryTimesTextbox;
+private Label faceSignLabel;
+//是否面签
+private Textbox faceSignTextbox;
+private Label remarkLabel;
+//备注
+private Textbox remarkTextbox;
+
+private Button addProductButton;
+private Button saveProductButton;
+private Button editProductButton;
+private Button cancelProductButton;
+private Button deleteProductButton;
+
+private int productId=0;
+
+<button id="addProductButton" visible="false" label="增加" />
+<button id="saveProductButton" visible="false" label="保存" />
+<button id="editProductButton" visible="false" label="编辑" />
+<button id="cancelProductButton" visible="false" label="取消" />
+<button id="deleteProductButton" visible="false" label="刪除" />
+
+public void clearProductTextbox(){
+productNameLabel.setValue("");
+productNameTextbox.setValue("");
+lineCustomerPriceLabel.setValue("");
+lineCustomerPriceTextbox.setValue("");
+peerPriceLabel.setValue("");
+peerPriceTextbox.setValue("");
+marketPriceLabel.setValue("");
+marketPriceTextbox.setValue("");
+imgLabel.setValue("");
+imgTextbox.setValue("");
+baVisaTypeIdLabel.setValue("");
+baVisaTypeIdTextbox.setValue("");
+baAdmissibleAreaIdLabel.setValue("");
+baAdmissibleAreaIdTextbox.setValue("");
+admissibleAreaTypeLabel.setValue("");
+admissibleAreaTypeTextbox.setValue("");
+outCycleLabel.setValue("");
+outCycleTextbox.setValue("");
+residenceTimeLabel.setValue("");
+residenceTimeTextbox.setValue("");
+effectiveTimeLabel.setValue("");
+effectiveTimeTextbox.setValue("");
+entryTimesLabel.setValue("");
+entryTimesTextbox.setValue("");
+faceSignLabel.setValue("");
+faceSignTextbox.setValue("");
+remarkLabel.setValue("");
+remarkTextbox.setValue("");
+}
+public void setProductValue(Product product){
+product.setProductName(productNameTextbox.getValue());
+product.setLineCustomerPrice(lineCustomerPriceTextbox.getValue());
+product.setPeerPrice(peerPriceTextbox.getValue());
+product.setMarketPrice(marketPriceTextbox.getValue());
+product.setImg(imgTextbox.getValue());
+product.setBaVisaTypeId(baVisaTypeIdTextbox.getValue());
+product.setBaAdmissibleAreaId(baAdmissibleAreaIdTextbox.getValue());
+product.setAdmissibleAreaType(admissibleAreaTypeTextbox.getValue());
+product.setOutCycle(outCycleTextbox.getValue());
+product.setResidenceTime(residenceTimeTextbox.getValue());
+product.setEffectiveTime(effectiveTimeTextbox.getValue());
+product.setEntryTimes(entryTimesTextbox.getValue());
+product.setFaceSign(faceSignTextbox.getValue());
+product.setRemark(remarkTextbox.getValue());
+}
+public void setProductData(Product product){
+productNameLabel.setValue(product.getProductName());
+productNameTextbox.setValue(product.getProductName());
+lineCustomerPriceLabel.setValue(product.getLineCustomerPrice());
+lineCustomerPriceTextbox.setValue(product.getLineCustomerPrice());
+peerPriceLabel.setValue(product.getPeerPrice());
+peerPriceTextbox.setValue(product.getPeerPrice());
+marketPriceLabel.setValue(product.getMarketPrice());
+marketPriceTextbox.setValue(product.getMarketPrice());
+imgLabel.setValue(product.getImg());
+imgTextbox.setValue(product.getImg());
+baVisaTypeIdLabel.setValue(product.getBaVisaTypeId());
+baVisaTypeIdTextbox.setValue(product.getBaVisaTypeId());
+baAdmissibleAreaIdLabel.setValue(product.getBaAdmissibleAreaId());
+baAdmissibleAreaIdTextbox.setValue(product.getBaAdmissibleAreaId());
+admissibleAreaTypeLabel.setValue(product.getAdmissibleAreaType());
+admissibleAreaTypeTextbox.setValue(product.getAdmissibleAreaType());
+outCycleLabel.setValue(product.getOutCycle());
+outCycleTextbox.setValue(product.getOutCycle());
+residenceTimeLabel.setValue(product.getResidenceTime());
+residenceTimeTextbox.setValue(product.getResidenceTime());
+effectiveTimeLabel.setValue(product.getEffectiveTime());
+effectiveTimeTextbox.setValue(product.getEffectiveTime());
+entryTimesLabel.setValue(product.getEntryTimes());
+entryTimesTextbox.setValue(product.getEntryTimes());
+faceSignLabel.setValue(product.getFaceSign());
+faceSignTextbox.setValue(product.getFaceSign());
+remarkLabel.setValue(product.getRemark());
+remarkTextbox.setValue(product.getRemark());
+}
+
+public void enableProductButton(String type) {
+if (type.equals("add")) {
+addProductButton.setVisible(false);
+editProductButton.setVisible(false);
+saveProductButton.setVisible(true);
+cancelProductButton.setVisible(true);
+}
+if (type.equals("update")) {
+addProductButton.setVisible(false);
+editProductButton.setVisible(false);
+saveProductButton.setVisible(true);
+cancelProductButton.setVisible(true);
+}
+if (type.equals("cancel")) {
+addProductButton.setVisible(true);
+editProductButton.setVisible(false);
+saveProductButton.setVisible(false);
+cancelProductButton.setVisible(false);
+}
+if (type.equals("save")) {
+addProductButton.setVisible(true);
+editProductButton.setVisible(false);
+saveProductButton.setVisible(false);
+cancelProductButton.setVisible(false);
+}
+if (type.equals("select")) {
+addProductButton.setVisible(true);
+editProductButton.setVisible(true);
+saveProductButton.setVisible(false);
+cancelProductButton.setVisible(false);
+}
+}
+public void enableProductTextbox(boolean flag){
+productNameLabel.setVisible(!flag);
+productNameTextbox.setVisible(flag);
+lineCustomerPriceLabel.setVisible(!flag);
+lineCustomerPriceTextbox.setVisible(flag);
+peerPriceLabel.setVisible(!flag);
+peerPriceTextbox.setVisible(flag);
+marketPriceLabel.setVisible(!flag);
+marketPriceTextbox.setVisible(flag);
+imgLabel.setVisible(!flag);
+imgTextbox.setVisible(flag);
+baVisaTypeIdLabel.setVisible(!flag);
+baVisaTypeIdTextbox.setVisible(flag);
+baAdmissibleAreaIdLabel.setVisible(!flag);
+baAdmissibleAreaIdTextbox.setVisible(flag);
+admissibleAreaTypeLabel.setVisible(!flag);
+admissibleAreaTypeTextbox.setVisible(flag);
+outCycleLabel.setVisible(!flag);
+outCycleTextbox.setVisible(flag);
+residenceTimeLabel.setVisible(!flag);
+residenceTimeTextbox.setVisible(flag);
+effectiveTimeLabel.setVisible(!flag);
+effectiveTimeTextbox.setVisible(flag);
+entryTimesLabel.setVisible(!flag);
+entryTimesTextbox.setVisible(flag);
+faceSignLabel.setVisible(!flag);
+faceSignTextbox.setVisible(flag);
+remarkLabel.setVisible(!flag);
+remarkTextbox.setVisible(flag);
+}
+class ProductRenderer implements ListitemRenderer {
+public void render(Listitem arg0, Object arg1, int arg2) throws Exception {
+Product product = (Product) arg1;
+Listcell productNameCell = new Listcell();
+productNameCell.setParent(arg0);
+new Label(product.getProductName()).setParent(productNameCell);
+Listcell lineCustomerPriceCell = new Listcell();
+lineCustomerPriceCell.setParent(arg0);
+new Label(product.getLineCustomerPrice()).setParent(lineCustomerPriceCell);
+Listcell peerPriceCell = new Listcell();
+peerPriceCell.setParent(arg0);
+new Label(product.getPeerPrice()).setParent(peerPriceCell);
+Listcell marketPriceCell = new Listcell();
+marketPriceCell.setParent(arg0);
+new Label(product.getMarketPrice()).setParent(marketPriceCell);
+Listcell imgCell = new Listcell();
+imgCell.setParent(arg0);
+new Label(product.getImg()).setParent(imgCell);
+Listcell baVisaTypeIdCell = new Listcell();
+baVisaTypeIdCell.setParent(arg0);
+new Label(product.getBaVisaTypeId()).setParent(baVisaTypeIdCell);
+Listcell baAdmissibleAreaIdCell = new Listcell();
+baAdmissibleAreaIdCell.setParent(arg0);
+new Label(product.getBaAdmissibleAreaId()).setParent(baAdmissibleAreaIdCell);
+Listcell admissibleAreaTypeCell = new Listcell();
+admissibleAreaTypeCell.setParent(arg0);
+new Label(product.getAdmissibleAreaType()).setParent(admissibleAreaTypeCell);
+Listcell outCycleCell = new Listcell();
+outCycleCell.setParent(arg0);
+new Label(product.getOutCycle()).setParent(outCycleCell);
+Listcell residenceTimeCell = new Listcell();
+residenceTimeCell.setParent(arg0);
+new Label(product.getResidenceTime()).setParent(residenceTimeCell);
+Listcell effectiveTimeCell = new Listcell();
+effectiveTimeCell.setParent(arg0);
+new Label(product.getEffectiveTime()).setParent(effectiveTimeCell);
+Listcell entryTimesCell = new Listcell();
+entryTimesCell.setParent(arg0);
+new Label(product.getEntryTimes()).setParent(entryTimesCell);
+Listcell faceSignCell = new Listcell();
+faceSignCell.setParent(arg0);
+new Label(product.getFaceSign()).setParent(faceSignCell);
+Listcell remarkCell = new Listcell();
+remarkCell.setParent(arg0);
+new Label(product.getRemark()).setParent(remarkCell);
+arg0.setValue(product);
+}
+}
+
+<listheader label="产品名称" />
+<listheader label="直客价" />
+<listheader label="同行价" />
+<listheader label="市场价" />
+<listheader label="产品图" />
+<listheader label="签证类型" />
+<listheader label="受理领区" />
+<listheader label="领区划分" />
+<listheader label="出签周期" />
+<listheader label="停留时间" />
+<listheader label="有效时间" />
+<listheader label="入境次数" />
+<listheader label="是否面签" />
+<listheader label="备注" />
+
+public boolean checkProductInput() {
+boolean flag = true;
+if (productNameTextbox.getValue().equals("")) {
+productNameTextbox.focus();
+Messagebox.show("产品名称不能为空！");
+flag = false;
+}
+if (lineCustomerPriceTextbox.getValue().equals("")) {
+lineCustomerPriceTextbox.focus();
+Messagebox.show("直客价不能为空！");
+flag = false;
+}
+if (peerPriceTextbox.getValue().equals("")) {
+peerPriceTextbox.focus();
+Messagebox.show("同行价不能为空！");
+flag = false;
+}
+if (marketPriceTextbox.getValue().equals("")) {
+marketPriceTextbox.focus();
+Messagebox.show("市场价不能为空！");
+flag = false;
+}
+if (imgTextbox.getValue().equals("")) {
+imgTextbox.focus();
+Messagebox.show("产品图不能为空！");
+flag = false;
+}
+if (baVisaTypeIdTextbox.getValue().equals("")) {
+baVisaTypeIdTextbox.focus();
+Messagebox.show("签证类型不能为空！");
+flag = false;
+}
+if (baAdmissibleAreaIdTextbox.getValue().equals("")) {
+baAdmissibleAreaIdTextbox.focus();
+Messagebox.show("受理领区不能为空！");
+flag = false;
+}
+if (admissibleAreaTypeTextbox.getValue().equals("")) {
+admissibleAreaTypeTextbox.focus();
+Messagebox.show("领区划分不能为空！");
+flag = false;
+}
+if (outCycleTextbox.getValue().equals("")) {
+outCycleTextbox.focus();
+Messagebox.show("出签周期不能为空！");
+flag = false;
+}
+if (residenceTimeTextbox.getValue().equals("")) {
+residenceTimeTextbox.focus();
+Messagebox.show("停留时间不能为空！");
+flag = false;
+}
+if (effectiveTimeTextbox.getValue().equals("")) {
+effectiveTimeTextbox.focus();
+Messagebox.show("有效时间不能为空！");
+flag = false;
+}
+if (entryTimesTextbox.getValue().equals("")) {
+entryTimesTextbox.focus();
+Messagebox.show("入境次数不能为空！");
+flag = false;
+}
+if (faceSignTextbox.getValue().equals("")) {
+faceSignTextbox.focus();
+Messagebox.show("是否面签不能为空！");
+flag = false;
+}
+return flag;
+}
+public void onClick$addProductButton() {
+productId = 0;
+enableProductTextbox(true);
+enableProductButton("add");
+clearProductTextbox();
+}
+
+public void onClick$saveProductButton(){
+if (productId == 0) {
+product = new xxxxxxxx();
+setProductValue(product);
+productList.add(product);
+} else {
+setProductValue(product);
+}
+productListbox.setModel(new ListModelList<>(productList, true));
+enableProductTextbox(false);
+enableProductButton("save");
+clearProductTextbox();
+}
+
+public void onClick$editProductButton() {
+productId = -1;
+enableProductTextbox(true);
+enableProductButton("update");
+}
+
+public void onClick$cancelProductButton() {
+enableProductButton("cancel");
+enableProductTextbox(false);
+clearProductTextbox();
+}
+
+public void onClick$deleteProductButton() {
+delProductList.add(product);
+productList.remove(product);
+productListbox.setModel(new ListModelList<>(productList, true));
+clearProductTextbox();
+enableProductButton("cancel");
+}
+
+public void onSelect$productListbox() {
+product=productListbox.getSelectedItem().getValue();
+setProductData(product);
+if (productId == 2)
+return;
+enableProductTextbox(false);
+enableProductButton("select");
+}
+

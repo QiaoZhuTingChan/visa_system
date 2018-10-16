@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-10-16 21:37:46 by GeneratedTool mjy -->
+<hibernate-mapping>
+	<class name="com.jyd.bms.bean.Product" table="product">
+		<id name="id" type="int">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="productName" type="java.lang.String">
+			<column name="product_name" />
+		</property>
+		<property name="lineCustomerPrice" type="double">
+			<column name="line_customer_price" />
+		</property>
+		<property name="peerPrice" type="double">
+			<column name="peer_price" />
+		</property>
+		<property name="marketPrice" type="double">
+			<column name="market_price" />
+		</property>
+		<property name="img" type="java.lang.String">
+			<column name="img" />
+		</property>
+		<property name="baVisaTypeId" type="int">
+			<column name="ba_visa_type_id" />
+		</property>
+		<property name="baAdmissibleAreaId" type="int">
+			<column name="ba_admissible_area_id" />
+		</property>
+		<property name="admissibleAreaType" type="java.lang.String">
+			<column name="admissible_area_type" />
+		</property>
+		<property name="outCycle" type="java.lang.String">
+			<column name="out_cycle" />
+		</property>
+		<property name="residenceTime" type="java.lang.String">
+			<column name="residence_time" />
+		</property>
+		<property name="effectiveTime" type="java.lang.String">
+			<column name="effective_time" />
+		</property>
+		<property name="entryTimes" type="int">
+			<column name="entry_times" />
+		</property>
+		<property name="faceSign" type="boolean">
+			<column name="face_sign" />
+		</property>
+		<property name="remark" type="java.lang.String">
+			<column name="remark" />
+		</property>
+		<property name="createDate" type="java.sql.Timestamp">
+			<column name="create_date" />
+		</property>
+		<property name="createUser" type="java.lang.String">
+			<column name="create_user" />
+		</property>
+		<property name="updateDate" type="java.sql.Timestamp">
+			<column name="update_date" />
+		</property>
+		<property name="updateUser" type="java.lang.String">
+			<column name="update_user" />
+		</property>
+	</class>
+</hibernate-mapping>

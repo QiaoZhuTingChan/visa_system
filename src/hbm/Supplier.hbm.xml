@@ -1,21 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2018-10-12 23:30:12 by GeneratedTool mjy -->
+<!-- Generated 2018-10-15 22:39:51 by GeneratedTool mjy -->
 <hibernate-mapping>
-	<class name="com.jyd.bms.bean.BaAddress" table="ba_address">
+	<class name="com.jyd.bms.bean.Supplier" table="supplier">
 		<id name="id" type="int">
 			<column name="id" />
 			<generator class="identity" />
 		</id>
-		<property name="contact" type="java.lang.String">
-			<column name="contact" />
-		</property>
-		<property name="contactPhone" type="java.lang.String">
-			<column name="contact_phone" />
+		<property name="contactName" type="java.lang.String">
+			<column name="contact_name" />
 		</property>
 		<property name="address" type="java.lang.String">
 			<column name="address" />
+		</property>
+		<property name="company" type="java.lang.String">
+			<column name="company" />
+		</property>
+		<property name="contactPhone" type="java.lang.String">
+			<column name="contact_phone" />
 		</property>
 		<property name="remark" type="java.lang.String">
 			<column name="remark" />

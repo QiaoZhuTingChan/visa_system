@@ -24,7 +24,7 @@ public class GeneratorTool {
 	public static final String name = "com.mysql.jdbc.Driver";
 	public static final String user = "root";
 	public static final String password = "123456";
-	public static final String tableName = "ba_data_template";
+	public static final String tableName = "product";
 	public static final String dataBase = "porcelain";
 	public static boolean dataFlag = true;
 	public static boolean timeStampflag = true;
@@ -61,14 +61,14 @@ public class GeneratorTool {
 	 */
 	public void start() throws IOException {
 		List<Table> list = new TableDao().findByDataBase(dataBase);
-		generatorBean(list);
-		generatorXml(list);
-		generatorDao();
-		generatorImpl(list);
-		generatorService();
-		generatorZul(list);
-		generatorWindow(list);
-		// auxiliaryCode(list);
+//		generatorBean(list);
+//		generatorXml(list);
+//		generatorDao();
+//		generatorImpl(list);
+//		generatorService();
+//		generatorZul(list);
+//		generatorWindow(list);
+		auxiliaryCode(list);
 	}
 
 	public void td(List<Table> list, StringBuilder code, int colsapn, int i) {
@@ -374,7 +374,7 @@ public class GeneratorTool {
 		code.append("}\n");
 		code.append("\n");
 
-		File file = new File(getRootPath() + "\\config\\auxiliaryCode.txt");
+		File file = new File(getRootPath() + "\\src\\config\\auxiliaryCode.txt");
 		createFile(file, code.toString());
 	}
 

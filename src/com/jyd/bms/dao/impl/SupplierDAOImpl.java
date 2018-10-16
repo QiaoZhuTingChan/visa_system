@@ -4,23 +4,23 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Repository;
 import com.jyd.bms.tool.exception.DAOException;
-import com.jyd.bms.bean.BaAddress;
-import com.jyd.bms.dao.BaAddressDAO;
+import com.jyd.bms.bean.Supplier;
+import com.jyd.bms.dao.SupplierDAO;
 /**
- * @category Generated 2018-10-12 23:30:12 by GeneratedTool
+ * @category Generated 2018-10-15 22:39:51 by GeneratedTool
  * @author mjy
  */
 @Repository
-public class BaAddressDAOImpl extends HibernateBaseTemplate<BaAddress> implements BaAddressDAO {
+public class SupplierDAOImpl extends HibernateBaseTemplate<Supplier> implements SupplierDAO {
 
- public int getBaAddressCount(String condition) throws DAOException {
+ public int getSupplierCount(String condition) throws DAOException {
 	String hql = "";
 	if (condition.equals("")) {
-	hql = "select count(*) from BaAddress";
+	hql = "select count(*) from Supplier";
 	List<Long> lstCount = super.getQueryResult(hql);
 	return lstCount.get(0).intValue();
 	} else {
-	hql = "select count(*) from BaAddress where contact like :condition";
+	hql = "select count(*) from Supplier where contactName like :condition";
 	Map map = new HashMap();
 	map.put("condition", "%" + condition + "%");
 	List<Long> lstCount = super.getQueryResult(hql, map);
@@ -28,21 +28,21 @@ public class BaAddressDAOImpl extends HibernateBaseTemplate<BaAddress> implement
 	}
  }
 
- public List<BaAddress> getPagingBaAddress(int firstResult, int maxResults, String condition)throws DAOException {
+ public List<Supplier> getPagingSupplier(int firstResult, int maxResults, String condition)throws DAOException {
 	String hql = "";
 	Map map = new HashMap();
 	if (condition.equals("")) {
-	hql = "from BaAddress";
+	hql = "from Supplier";
 	} else {
-	hql = "from BaAddress where contact like :condition";
+	hql = "from Supplier where contactName like :condition";
 	map.put("condition", "%" + condition + "%");
 	}
 	return super.getPagingQueryResult(hql.toString(), map, firstResult, maxResults);
  }
 
- public List<BaAddress> getAllBaAddress() throws DAOException {
+ public List<Supplier> getAllSupplier() throws DAOException {
 	String hql = "";
-	hql = "from BaAddress";
+	hql = "from Supplier";
 	return super.getQueryResult(hql.toString());
  }
 }

@@ -54,17 +54,10 @@
 	</component>
 	<component>
 		<extends>listbox</extends>
-		<component-name>baAddressListbox</component-name>
-		<component-class>com.jyd.bms.components.BaAddressListbox
-		</component-class>
-	</component>
-	<component>
-		<extends>listbox</extends>
 		<component-name>baVisaTypeListbox</component-name>
 		<component-class>com.jyd.bms.components.BaVisaTypeListbox
 		</component-class>
 	</component>
-
 	<component>
 		<extends>listbox</extends>
 		<component-name>baAdmissibleAreaListbox</component-name>

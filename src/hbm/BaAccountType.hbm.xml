@@ -1,24 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 2018-10-13 14:23:15 by GeneratedTool mjy -->
+<!-- Generated 2018-10-15 22:36:59 by GeneratedTool mjy -->
 <hibernate-mapping>
-	<class name="com.jyd.bms.bean.ProductCategory"
-		table="ba_product_category">
+	<class name="com.jyd.bms.bean.BaAccountType" table="ba_account_type">
 		<id name="id" type="int">
 			<column name="id" />
 			<generator class="identity" />
 		</id>
-		<property name="name" type="java.lang.String">
-			<column name="name" />
-		</property>
-		<many-to-one name="parentCategory" column="parent_id"
-			class="com.jyd.bms.bean.ProductCategory" />
-		<property name="sortIndex" type="int">
-			<column name="sort_index" />
-		</property>
-		<property name="remark" type="java.lang.String">
-			<column name="remark" />
+		<property name="baAccountType" type="java.lang.String">
+			<column name="ba_account_type" />
 		</property>
 		<property name="createDate" type="java.sql.Timestamp">
 			<column name="create_date" />
@@ -31,6 +22,9 @@
 		</property>
 		<property name="updateUser" type="java.lang.String">
 			<column name="update_user" />
+		</property>
+		<property name="remark" type="java.lang.String">
+			<column name="remark" />
 		</property>
 	</class>
 </hibernate-mapping>
